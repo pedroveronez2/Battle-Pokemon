@@ -1,0 +1,16 @@
+package com.projectPokedex.Pokedex;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@SpringBootApplication
+@CrossOrigin(origins = "*", allowedHeaders = "*") // Configuração CORS global
+
+public class PokedexApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PokedexApplication.class, args);
+	}
+
+}

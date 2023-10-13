@@ -1,12 +1,22 @@
 import React from 'react';
-import './App.css';
-import PokemonList from './components/PokemonList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/NavBar';
+import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SingupPage';
 
 function App() {
   return (
-    <div className="App">
-      <PokemonList />
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

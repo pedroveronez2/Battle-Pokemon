@@ -1,0 +1,41 @@
+/* Signup.css */
+
+/* Estilize o contêiner principal */
+.signup-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Estilize o título */
+.signup-title {
+  color: #333;
+}
+
+/* Estilize os campos de entrada */
+.signup-input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilize o botão de envio */
+signup-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilize o botão de envio quando o mouse estiver sobre ele */
+signup-button:hover {
+  background-color: #0056b3;
+}

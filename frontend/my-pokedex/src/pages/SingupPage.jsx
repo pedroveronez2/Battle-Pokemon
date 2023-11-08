@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';  // Importe o Axios
 import './Signup_login.css';
 
 function SignupPage() {
@@ -6,9 +7,35 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Adicione aqui a lógica de criação de conta, como enviar os dados para o servidor.
+
+    // Validação dos dados
+    if (!name || !email || !password) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
+
+    try {
+      // Faça uma chamada para a API para validar os dados (substitua a URL pela sua API real)
+      const response = await axios.post('http://localhost:8081/trainer', {
+        "nome":name,
+        "email":email,
+        "senha": password,
+      });
+
+      // Verifique a resposta da API
+      if (!response.data.success) {
+        alert('Cadastro bem-sucedido!');
+        // Limpe os campos do formulário
+        setName('');
+        setEmail('');
+        setPassword('');
+      } 
+    } catch (error) {
+      alert('Ocorreu um erro ao processar a solicitação.');
+      console.error(error);
+    }
   };
 
   return (

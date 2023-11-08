@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const modalContainerStyles = {
   position: 'fixed',
@@ -17,26 +17,70 @@ const modalStyles = {
   padding: '20px',
   borderRadius: '5px',
   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.3)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center', // Alinhar o conteúdo no centro verticalmente
+};
+
+const arrowStyles = {
+  cursor: 'pointer',
+  fontSize: '24px',
+  margin: '0 10px',
 };
 
 function PokemonDetailsModal({ pokemon, onClose }) {
+  const {
+    name,
+    frontAnimatedImage,
+    backAnimatedImage,
+    id,
+    types,
+    abilities,
+    stats,
+  } = pokemon;
+
+  const [showFrontImage, setShowFrontImage] = useState(true);
+
+  const toggleImage = () => {
+    setShowFrontImage(!showFrontImage);
+  };
+
   return (
     <div style={modalContainerStyles}>
       <div style={modalStyles}>
-        <h2>{pokemon.name}</h2>
-        <img src={pokemon.frontAnimatedImage} alt={`${pokemon.name} (frente animada)`} />
-        <img src={pokemon.backAnimatedImage} alt={`${pokemon.name} (costas animada)`} />
-        <p>ID: {pokemon.id}</p>
-        <p>Tipo: {pokemon.types.join(', ')}</p>
-        <p>Habilidades: {pokemon.abilities.join(', ')}</p>
+        <h2>{name}</h2>
+        <div>
+          {showFrontImage ? (
+            <img src={frontAnimatedImage} alt={`${name} (frente animada)`} />
+          ) : (
+            <img src={backAnimatedImage} alt={`${name} (costas animada)`} />
+          )}
+        </div>
+        <div>
+          <span
+            style={arrowStyles}
+            onClick={toggleImage}
+          >
+            {'<'}
+          </span>
+          <span
+            style={arrowStyles}
+            onClick={toggleImage}
+          >
+            {'>'}
+          </span>
+        </div>
+        <p>ID: {id}</p>
+        <p>Tipo: {types.join(', ')}</p>
+        <p>Habilidades: {abilities.join(', ')}</p>
         <h3>Estatísticas:</h3>
         <ul>
-          <li>Ataque: {pokemon.stats.attack}</li>
-          <li>Defesa: {pokemon.stats.defense}</li>
-          <li>HP: {pokemon.stats.hp}</li>
-          <li>Ataque Especial: {pokemon.stats['special-attack']}</li>
-          <li>Defesa Especial: {pokemon.stats['special-defense']}</li>
-          <li>Velocidade: {pokemon.stats.speed}</li>
+          <li>Ataque: {stats.attack}</li>
+          <li>Defesa: {stats.defense}</li>
+          <li>HP: {stats.hp}</li>
+          <li>Ataque Especial: {stats['special-attack']}</li>
+          <li>Defesa Especial: {stats['special-defense']}</li>
+          <li>Velocidade: {stats.speed}</li>
         </ul>
         <button onClick={onClose}>Fechar</button>
       </div>

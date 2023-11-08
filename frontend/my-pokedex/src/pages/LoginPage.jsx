@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import './Signup_login.css'; // Importe o mesmo arquivo de estilos do Signup
 
 function LoginPage() {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
-    // Adicione aqui a lógica de autenticação, como verificar as credenciais.
   };
 
+
   return (
+    
     <div className="signup-container"> 
+
+
       <h2 className="signup-title">Login</h2> 
       <form onSubmit={handleSubmit}>
         <input
